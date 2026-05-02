@@ -1,0 +1,36 @@
+services:
+  jupyter:
+    container_name: jupyter-sec
+    build: .
+    ports:
+      - "8888:8888"
+    restart: unless-stopped
+
+    deploy:
+      resources:
+        limits:
+          memory: 2g
+          cpus: "1.5"
+
+    mem_limit: 2g
+    cpus: 1.5
+
+    ulimits:
+      nproc: 256
+
+    volumes:
+      - ./jupyter_persist:/home/jovyan/work
+      - ./jupyter_custom:/home/jovyan/.jupyter/custom
+      - ./jupyter_config/jupyter_server_config.py:/home/jovyan/.jupyter/jupyter_server_config.py
+
+    environment:
+      - JUPYTER_TOKEN=123
+      - DOCKER_STACKS_JUPYTER_CMD=nbclassic
+
+    command: >
+      start-notebook.py
+      --ServerApp.root_dir=/home/jovyan/work
+      --ServerApp.default_url=/tree
+      --ServerApp.token=''
+      --ServerApp.password=''
+      --ServerApp.ip=0.0.0.0
