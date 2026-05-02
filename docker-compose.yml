@@ -3,7 +3,7 @@ services:
     container_name: jupyter-sec
     build: .
     ports:
-      - "8888:8888"
+      - "8008:8008"
     restart: unless-stopped
 
     deploy:
@@ -24,8 +24,17 @@ services:
       - ./jupyter_config/jupyter_server_config.py:/home/jovyan/.jupyter/jupyter_server_config.py
 
     environment:
-      - JUPYTER_TOKEN=123
       - DOCKER_STACKS_JUPYTER_CMD=nbclassic
+      - NB_USER=jovyan
+      - NB_UID=1000
+      - NB_GID=1000
+      - CHOWN_HOME=yes
+      - CHOWN_EXTRA=/home/jovyan/work
+      - CHOWN_EXTRA_OPTS=-R
+      - JUPYTER_DOCKER_STACKS_QUIET=
+      - GRANT_SUDO="yes"
+      - JUPYTER_ENV_VARS_TO_UNSET=
+      - JUPYTER_PORT=8008
 
     command: >
       start-notebook.py
