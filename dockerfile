@@ -25,9 +25,10 @@ RUN printf '%s\n' \
 '#!/bin/sh' \
 'set -eu' \
 '' \
-'NBCLASSIC_IMG_DIR="/opt/conda/lib/python3.11/site-packages/nbclassic/static/base/images"' \
-'JSERVER_FAVICON_DIR="/opt/conda/lib/python3.11/site-packages/jupyter_server/static/favicons"' \
 'ASSET_SRC="/opt/custom-assets/images"' \
+'SP="/opt/conda/lib/python3.13/site-packages"' \
+'NBCLASSIC_IMG_DIR="$SP/nbclassic/static/base/images"' \
+'JSERVER_FAVICON_DIR="$SP/jupyter_server/static/favicons"' \
 '' \
 'if [ -d "$ASSET_SRC" ]; then' \
 '  mkdir -p "$NBCLASSIC_IMG_DIR" "$JSERVER_FAVICON_DIR"' \

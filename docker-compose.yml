@@ -28,7 +28,7 @@ services:
       - DOCKER_STACKS_JUPYTER_CMD=nbclassic
       - NB_USER=jovyan
       - NB_UID=1000
-      - NB_GID=1000
+      - NB_GID=100
       - CHOWN_HOME=yes
       - CHOWN_EXTRA=/home/jovyan/work
       - CHOWN_EXTRA_OPTS=-R
