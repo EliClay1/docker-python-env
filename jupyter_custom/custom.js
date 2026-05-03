@@ -9,7 +9,7 @@ require(["base/js/namespace", "base/js/events"], function(Jupyter, events) {
         li.id = "home-button";
 
         const a = document.createElement("a");
-        a.href = "javascript:history.back()";
+        a.href = "/";
         a.textContent = "Home";
 
         li.appendChild(a);

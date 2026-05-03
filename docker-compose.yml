@@ -2,6 +2,7 @@ services:
   jupyter:
     container_name: jupyter-sec
     build: .
+    user: root
     ports:
       - "8008:8008"
     restart: unless-stopped
@@ -35,6 +36,8 @@ services:
       - GRANT_SUDO="yes"
       - JUPYTER_ENV_VARS_TO_UNSET=
       - JUPYTER_PORT=8008
+      - CHOWN_HOME_OPTS=-R
+      - LD_LIBRARY_PATH=
 
     command: >
       start-notebook.py
