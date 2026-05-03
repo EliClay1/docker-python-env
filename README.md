@@ -8,6 +8,9 @@ Persists notebooks and data across container restarts
 Keeps dependencies isolated so your host stays clean
 
 ## Quick Start
+Ensure that the files have the right permissions on Linux.
+`sudo chown -R 1000:1000 ./jupyter_persist ./jupyter_custom ./jupyter_config`
+
 ```
 docker compose up -d
 ```
