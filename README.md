@@ -14,7 +14,7 @@ Ensure that the files have the right permissions on Linux.
 ```
 docker compose up -d
 ```
-go to http://localhost:8888.
+go to http://localhost:8008.
 
 ## Getting started
 Build the image
